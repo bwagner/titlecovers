@@ -20,14 +20,14 @@ def getItemUrl(theIsbn):
     return url
 
 def getImgUrl(theIsbn, theSize):
-    amz = __getAmazon__(theSize)
+    amz = __getAmazon__(theIsbn)
 #    print "getImgUrl: amz: " + str(amz)
     url = amz.getImgUrl(theSize)
 #    print "getImgUrl: " + str(url)
     return url
 
 def __getAmazon__(theIsbn):
-    print "__getAmazon__" + theIsbn
+#    print "__getAmazon__" + theIsbn
     # TODO race condition
     theIsbn = amazon.normalizeIsbn(theIsbn)
     hits = AmazonInfo.objects.filter(isbn=theIsbn)
