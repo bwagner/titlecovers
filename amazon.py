@@ -3,12 +3,16 @@
 from lxml import etree
 
 import bottlenose
-amazon = bottlenose.Amazon('xxx', 'xxx', 'xxx', Region="DE")
+amazon = bottlenose.Amazon(
+    'xxx', 
+    'xxx', 
+    'xxx', 
+    Region="DE"
+)
 
 ns = {'ns': "http://webservices.amazon.com/AWSECommerceService/2010-11-01"}
 
 xpaths = {
-        
         'swatch': '//ns:ImageSets[1]/ns:ImageSet[1]/ns:SwatchImage[1]/ns:URL[1]',
         'small': '//ns:ImageSets[1]/ns:ImageSet[1]/ns:SmallImage[1]/ns:URL[1]',
         'tiny': '//ns:ImageSets[1]/ns:ImageSet[1]/ns:TinyImage[1]/ns:URL[1]',
@@ -24,7 +28,12 @@ def getImgUrl(isbn, size):
         #TODO: possibly notify user of error condition
         xpath = xpaths['small']
 
-    response = amazon.ItemLookup( ItemId = isbn, ResponseGroup = "Images", SearchIndex = "Books", IdType = "ISBN")
+    response = amazon.ItemLookup( 
+        ItemId = isbn, 
+        ResponseGroup = "Images", 
+        SearchIndex = "Books", 
+        IdType = "ISBN"
+    )
     tree = etree.fromstring(response)
     return tree.xpath(xpath, namespaces=ns)[0].text
 
@@ -43,6 +52,17 @@ def normalizeIsbn(isbn):
     return isbn.replace('-','')
 
 def getAllImages(isbn):
+    """Returns all image urls as list
+
+    in order swatch, small, tiny, medium, large"""
+    sizes = ['swatch', 'small', 'tiny', 'medium', 'large']
+    isbn = normalizeIsbn(isbn)
+    response = amazon.ItemLookup( ItemId = isbn, ResponseGroup = "Images", SearchIndex = "Books", IdType = "ISBN")
+    tree = etree.fromstring(response)
+    result = [tree.xpath(xpaths[size], namespaces=ns)[0].text for size in sizes ]
+    return result
+
+def getAllImagesRaw(isbn):
     isbn = normalizeIsbn(isbn)
     response = amazon.ItemLookup( ItemId = isbn, ResponseGroup = "Images", SearchIndex = "Books", IdType = "ISBN")
     return response
