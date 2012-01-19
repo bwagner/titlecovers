@@ -31,6 +31,15 @@ Prerequisite installs
 * [Django](https://www.djangoproject.com/)
 * You need both Amazon Product Advertising and AWS accounts (see [Product Advertising API Developer Guide](http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/index.html))
 
+Installation
+------------
+
+    $ git clone git://github.com/bwagner/titlecovers.git
+    $ cd titlecovers
+    $ python manage.py syncdb
+    $ vi localsettings.py # add at least AWSAccessKeyId, AWSSecretAccessKey, AssociateTag
+    $ python manage.py runserver
+
 Authors
 -------
 
