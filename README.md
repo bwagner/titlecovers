@@ -6,7 +6,7 @@ and images of different sizes as offered by the
 [amazon api](http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/index.html) for a given product ASIN/isbn number. It uses the German amazon site, but can easily be configured to use other amazon sites (US, UK, etc.)
 
 It uses [bottlenose](https://github.com/dlo/bottlenose) under the hood. As 
-described in its [README](https://github.com/dlo/bottlenose/blob/master/README.md), before you get started, make sure you have both Amazon Product Advertising and AWS accounts. You need to enter these into a file `localsettings.py` according to this format (parameters are passed along to `bottlenose.Amazon`):
+described in its [README](https://github.com/dlo/bottlenose/blob/master/README.md), before you get started, make sure you have both Amazon Product Advertising and AWS accounts. You need to enter these into a file `localsettings.py` according to this format (parameters are passed along to `[bottlenose.Amazon](https://github.com/dlo/bottlenose/blob/master/bottlenose/api.py#LC125)`):
 
     AWSAccessKeyId=...
     AWSSecretAccessKey=...
