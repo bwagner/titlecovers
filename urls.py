@@ -6,8 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
-    (r'^titlecovers/(\d(?:\d|-)+\d)/detailurl', 'titlecovers.views.detailurl'),
-    (r'^titlecovers/(\d(?:\d|-)+\d)/(\w+)', 'titlecovers.views.imgurl'),
+    (r'^titlecovers/([^/]+)/detailurl', 'titlecovers.views.detailurl'),
+    (r'^titlecovers/([^/]+)/(\w+)', 'titlecovers.views.imgurl'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
