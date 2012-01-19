@@ -20,7 +20,7 @@ It retrieves images of different sizes ('swatch', 'small', 'tiny', 'medium', 'la
 
     curl -L http://127.0.0.1:8000/titlecovers/978-3865053053/small
 
-The '-L' option is required for curl to follow the redirection.
+The ['-L'](http://curl.haxx.se/docs/manpage.html#-L) option is required for [curl](http://curl.haxx.se/docs/manpage.html) to follow the redirection.
 
 The application caches the retrieved urls for a configurable time (default: one week). NOTE: the images themselves are not cached by the application (as this would violate amazon usage terms).
 
