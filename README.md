@@ -53,5 +53,4 @@ License
 
 Copyright 2011 SBS.
 
-Licensed under GNU Affero General Public License as published by the Free Software Foundation,
-either [version 3](http://www.gnu.org/licenses/agpl-3.0.html) of the License, or (at your option) any later version.
+Licensed under GNU Affero General Public License as published by the Free Software Foundation, either [version 3](http://www.gnu.org/licenses/agpl-3.0.html) of the License, or (at your option) any later version.
