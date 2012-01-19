@@ -11,7 +11,11 @@ except ImportError:
     sys.stderr.write("Error: Can't find the file 'localsettings.py' in the directory containing %r. (If the file localsettings.py does indeed exist, it's causing an ImportError somehow.)\n" % __file__)
     sys.exit(1)
 
-amazon = bottlenose.Amazon(localsettings.__dict__)
+allvars = dict(vars(localsettings))
+unwanted = set(allvars) - set(['AWSAccessKeyId', 'AWSSecretAccessKey', 'AssociateTag', 'Operation', 'Style', 'Version', 'Region', 'Timeout'])
+for unwanted_key in unwanted: del allvars[unwanted_key]
+
+amazon = bottlenose.Amazon(**allvars)
 
 ns = {'ns': "http://webservices.amazon.com/AWSECommerceService/2010-11-01"}
 
