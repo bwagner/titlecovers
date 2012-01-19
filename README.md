@@ -7,20 +7,20 @@ and images of different sizes as offered by the
 
 It uses [bottlenose](https://github.com/dlo/bottlenose) under the hood. As 
 described in its [README](https://github.com/dlo/bottlenose/blob/master/README.md), before you get started, make sure you have both Amazon Product Advertising and AWS accounts. You need to enter these into a file localsettings.py according
-to this format (parameters are passed along to bottlenose.Amazon):
-AWSAccessKeyId=...
-AWSSecretAccessKey=...
-AssociateTag=...
+to this format (parameters are passed along to `bottlenose.Amazon`):
+    AWSAccessKeyId=...
+    AWSSecretAccessKey=...
+    AssociateTag=...
 
 The application retrieves detail urls of amazon books by requesting them as follows:
 
     curl http://127.0.0.1:8000/titlecovers/978-3865053053/detailurl
 
-It retrieves images of different sizes (swatch', 'small', 'tiny', 'medium', 'large) and redirects immediately to the url given by the amazon service.
+It retrieves images of different sizes ('swatch', 'small', 'tiny', 'medium', 'large') and redirects immediately to the url given by the amazon service.
 
     curl -L http://127.0.0.1:8000/titlecovers/978-3865053053/small
 
-The '-L' is required for curl to follow the redirection.
+The '-L' option is required for curl to follow the redirection.
 
 The application caches the retrieved urls for a configurable time (default: one week). NOTE: the images themselves are not cached by the application (as this would violate amazon usage terms).
 
