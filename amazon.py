@@ -3,12 +3,15 @@
 from lxml import etree
 
 import bottlenose
-amazon = bottlenose.Amazon(
-    'xxx', 
-    'xxx', 
-    'xxx', 
-    Region="DE"
-)
+
+try:
+    import localsettings # Assumed to be in the same directory.
+except ImportError:
+    import sys
+    sys.stderr.write("Error: Can't find the file 'localsettings.py' in the directory containing %r. (If the file localsettings.py does indeed exist, it's causing an ImportError somehow.)\n" % __file__)
+    sys.exit(1)
+
+amazon = bottlenose.Amazon(localsettings.__dict__)
 
 ns = {'ns': "http://webservices.amazon.com/AWSECommerceService/2010-11-01"}
 
