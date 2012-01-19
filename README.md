@@ -36,7 +36,7 @@ Installation
 
     $ git clone git://github.com/bwagner/titlecovers.git
     $ cd titlecovers
-    $ python manage.py syncdb
+    $ python manage.py syncdb --noinput
     $ vi localsettings.py # add at least AWSAccessKeyId, AWSSecretAccessKey, AssociateTag
     $ python manage.py runserver
 
